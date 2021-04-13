@@ -1,0 +1,41 @@
+{% extends 'user/base.html' %}
+{% load static %}
+
+{% block  content %}
+      <br>
+      <div class="content-section">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group" id="xxxx">
+                <legend class="border-bottom mb-4"><span class="text-muted">Register</span></legend>
+                <div class="signup">
+                Username : 
+                <br>{{ form.username }}
+                <br>
+                <br>
+                Password : Should contain atleast one number 1-9 and atleat one special character #,$,%,^
+                <br>
+                {{ form.password1 }}
+                <br>
+                <br>
+                Confirm Password : <br>
+                {{ form.password2 }}
+                <br>
+                <br>
+                email : <br>
+                {{ form.email }}
+                
+                <br>
+            </div>
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Sign Up</button>
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Already Have An Account? <a class="ml-2" href="{% url 'login' %}">Log In</a>
+            </small>
+        </div>
+    </div>
+{% endblock  %} 

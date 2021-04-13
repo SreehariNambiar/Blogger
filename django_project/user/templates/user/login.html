@@ -1,0 +1,32 @@
+
+{% extends 'user/base.html' %}
+{% load static %}
+
+{% block  content %}
+      <br>
+      <div class="content-section">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4"><span class="text-muted">Join Today</span></legend>
+                <!-- {{ form }} -->
+                Username : 
+                <br>{{ form.username }}
+                <br>
+                <br>
+                Password : 
+                <br>
+                {{ form.password }}
+                <br>
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">login</button>
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Don't have An Account? <a class="ml-2" href="{% url 'signup' %}">Sign up</a>
+            </small>
+        </div>
+    </div>
+{% endblock  %} 

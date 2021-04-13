@@ -1,0 +1,37 @@
+{% extends 'blog/base.html' %}
+{% block content  %}
+
+    <article class="media content-section" id="qq">
+    <div class="card" id="qqq" style="min-width:22rem ;max-width:600px;border-radius:10px;border:1px solid #00bbff;transition:0.5s;position:absolute;top:10em;">
+        <div class="card-body">
+            {% if blog.author.profile.profile_pic %}
+            <img class="rounded-circle mb-3" width=40px height=40px; src="{{ blog.author.profile.profile_pic.url }}">
+            {% endif %}
+            <h4 class="card-title"><a class="article-title" href="{% url 'post-detail' blog.id %}" >{{blog.title}} </a></h4>
+            <h6 class="card-subtitle mb-2 text-muted"> <a href="{% url 'user-home' blog.author.id %}" >Author -- {{blog.author}} </a> </h6>
+            <p class="card-text"> {{blog.content}}</p>
+            {% if blog.company_name %}
+            <p>Company = {{ blog.company_name }} </p>
+            {% endif %}
+            {% if blog.salary %}
+            <p>Salary = {{ salary }}</p>
+            {% endif %}
+            {% if blog.image1 %}
+            <img width="500px" height=auto; src="{{ blog.image1.url }}" alt="image1">
+            {% endif %}
+            <br>
+            <br>
+            {% if blog.image2 %}
+            <img width="500px" src="{{ blog.image2.url }}" alt="image2" >
+            {% endif %}
+            {% if blog.pdf %}
+            <p class="my-2">Open a PDF file <a href="{{ blog.pdf.url }}">Click here!</a></p>
+            {% endif %}
+            <a href="{% url 'post-delete' blog.id %}" class="card-link">Delete</a>
+            <a href="{% url 'post-update' blog.id %}" class="card-link">Update</a>
+        </div>
+    </div>
+    </article>
+
+    
+{% endblock content %}
